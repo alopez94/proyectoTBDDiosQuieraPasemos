@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const gamesRoutes_1 = __importDefault(require("./routes/gamesRoutes"));
 const queryRoutes_1 = __importDefault(require("./routes/queryRoutes"));
+const TableQueryRoute_1 = __importDefault(require("./routes/TableQueryRoute"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -27,6 +28,7 @@ class Server {
         this.app.use('/api/games', gamesRoutes_1.default);
         this.app.use('/api/query', queryRoutes_1.default);
         this.app.use('/api/tableNames', queryRoutes_1.default);
+        this.app.use('/api/TableQuery', TableQueryRoute_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
