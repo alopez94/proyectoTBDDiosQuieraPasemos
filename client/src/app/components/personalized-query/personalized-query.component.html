@@ -1,0 +1,67 @@
+
+<div class="container">
+  <input type="checkbox" data-toggle="toggle" data-on="SQL" data-off="MySQL">
+
+<br>
+<br>
+
+<div class="card">
+    <div class="card-body">
+        <form>
+        <p>Ingresa tu Codigo Personalizado (MySQL/SQL) Aqui</p>
+        <div class="form-group">
+            <textarea #sqlQuerydelForm id="" placeholder="SQL/MYSQL Code" rows="5" columns="4" class="form-control"></textarea>
+        </div>
+        
+        <button class="btn btn-success btn-block" (click)="addviaQuery(sqlQuerydelForm.value)">
+                Execute
+        </button>
+        
+        </form> 
+    </div>
+</div>
+
+
+
+
+<br>
+<!--
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Tablas Creadas
+  </button>
+  
+    <a class="dropdown-item" name="Selected" href="#">table.name</a>
+  </div>
+</div>
+
+-->
+  
+
+<div class="btn-group dropright col order-12 pl-0 mb-2" >
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Tablas Creadas
+  </button>
+  <div class="dropdown-menu">
+      <a class="dropdown-item"> Tabla 1</a>
+      <a class="dropdown-item"> Tabla 2</a>
+      <a class="dropdown-item"> Tabla 3</a>
+            
+  </div>
+</div>
+
+<br>
+<div class="card">
+    <div class="card-body">
+        <form>
+        <p>Tabla </p>
+           
+      <!--  <div *ngFor="let tablename of tablesNames">
+          {{tablename.name}}
+        </div>-->
+        </form>
+    </div>
+</div>
+
+</div>
+

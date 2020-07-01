@@ -1,0 +1,125 @@
+
+    <br>
+
+<div class="container">
+    <input type="checkbox" data-toggle="toggle" data-on="SQL" data-off="MySQL">
+
+
+      <br>
+    <div class="col-md-6*2 offset-md-1 mt-5">
+        <div class="card">
+            <div class="card card-body text-center">
+                <form>
+                <div class="form-group text-left">
+                   <h4>Nombre de la Tabla</h4>  
+                   <input type="text" name="name" [(ngModel)]="tables.Name" placeholder="Nombre Tabla" class="form-control" autofocus #tableName>
+                    
+                </div>
+
+                
+                <br>
+                <br>
+            </form>
+
+            <div class="container">
+                        <form (submit)="addColumnstoPreview(columnName,columnType)">
+                                <div class="row">
+
+                                    <div class="form-group form-check col">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Primary Key?</label>
+                                    </div>
+
+                                                <div class="col">
+                                                    <input type="text" name="Columns" placeholder="Columns" class="form-control" #columnName>
+                                                </div>
+                                    
+                                    
+                                                <div class="col pr-0">
+
+                                                    <input type="text" name="Type" placeholder="Type" class="form-control" #columnType>
+                                                    
+                                                </div>  
+                                                
+                                            
+                                                <div class="btn-group dropright col pl-0">
+                                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                                    Variable
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <ul>
+                                                        <button *ngFor="let variable of variables" (onclick)="dropdownselection(columnType)">
+                                                            {{variable}}
+                                                        </button>
+                                                    </ul>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col pr-0">
+                                                    <input type="text" name="relatedTable"  placeholder="Connect to :" class="form-control" #relatedTable>
+                                                </div>
+
+                                                <div class="btn-group dropright col pl-0" id="drop1">
+                                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                                    Tables
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" selected="selected"> Table 1</a>
+                                                        <a class="dropdown-item" selected="selected"> Table 2</a>
+                                                        <a class="dropdown-item" selected="selected"> Table 3</a>
+                                                        
+                                                    </div>
+                                                </div>
+
+                                                <button class="btn btn-success col">
+                                                    Agregar
+                                                </button>
+
+                                                
+                                            </div>
+
+                                            
+                                        </form>             
+                                </div>
+
+
+                                
+                            
+                            
+                                
+                            </div>
+            
+        </div>
+
+       
+    </div>
+
+    <div class="col-md-6 offset-md-1 mt-5">
+        <div class="card card-body text-center">
+
+        
+            <h3>Columns de {{tables.Name}}</h3>
+       
+
+
+            <ul>
+              <li *ngFor="let col of cols" class="text-left">
+                
+                {{col}}    <button class="btn btn-danger" (click)="deleteColumn(columnName,columnType)">X</button> 
+                    <br>
+             </li> 
+            </ul>
+            
+              <p>Table Created on {{tables.created_at | date: 'yyyy-MM-dd'}}</p>
+        </div>
+    
+</div>
+
+</div>  
+
+
+            <button class="btn btn-success col-md-6 offset-md-2 mt-5" (click)="saveNewtable()">
+                Salvar Tabla
+            </button>
+
+            
