@@ -15,6 +15,9 @@ export class TableServices {
 
   constructor(private https: HttpClient) { }
 
+
+  //getservices ----------------------------------------
+
   getTable(){
 
     return this.https.get(`${this.API_URI}/table`);
@@ -26,6 +29,9 @@ export class TableServices {
     return this.https.get(`${this.API_URI}/table/${id}`);
   }
 
+
+  //deleteServices--------------------------------------
+
    deleteTable(id: string){
     return this.https.delete(`${this.API_URI}/table/${id}`);
   }
@@ -34,6 +40,7 @@ export class TableServices {
     return this.https.post(`${this.API_URI}/table`, table);
   }
 
+  
   addviaQuery(sqlQuery: string){
     return this.https.post(`${this.API_URI}/query`, {query:sqlQuery});
   }

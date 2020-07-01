@@ -6,6 +6,7 @@ import indexRoutes from './routes/indexRoutes';
 import gamesRoutes from './routes/gamesRoutes';
 import queryRoute22 from './routes/queryRoutes';
 import TableQueryRoute from './routes/TableQueryRoute';
+import  sqlVariablesNamesRoutes from './routes/sqlVariablesNamesRoutes';
 
 
 class Server {
@@ -36,6 +37,7 @@ class Server {
        this.app.use('/api/query', queryRoute22);
        this.app.use('/api/tableNames', queryRoute22);
        this.app.use('/api/TableQuery',TableQueryRoute);
+       this.app.use('/api/getVariablesSQL', sqlVariablesNamesRoutes);
     }
 
     start(): void {

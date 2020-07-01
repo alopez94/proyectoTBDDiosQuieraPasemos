@@ -12,10 +12,10 @@ import { stringify } from 'querystring';
 export class TableFormComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
-  
-  cols: string[] =[];
-  variables: any[] = ["varchar(200)","int", "double"];
 
+  cols: string[] = [];
+  variables: any[] = ["varchar(200)", "int", "double"];
+  culumnaSeleccionada = "";
   tables: Table = {
     id: 0,
     Name: '',
@@ -25,19 +25,19 @@ export class TableFormComponent implements OnInit {
 
 
 
-  constructor(private tableService: TableServices) { 
-    
+  constructor(private tableService: TableServices) {
+
   }
 
   ngOnInit(): void {
 
   }
 
-  addColumnstoPreview(columnName,columnType){
-   
+  addColumnstoPreview(columnName, columnType) {
+
     var str1 = new String(columnName.value);
     var str2 = new String(columnType.value);
-    let concat = str1.concat(" ",str2.toString());
+    let concat = str1.concat(" ", str2.toString());
     this.cols.push(concat);
     columnName.value = '';
     columnType.value = '';
@@ -46,51 +46,62 @@ export class TableFormComponent implements OnInit {
 
   }
 
-  deleteColumn(columnName,columnType){
-    
+  deleteColumn(columnName, columnType) {
+
     var str1 = new String(columnName.value);
     var str2 = new String(columnType.value);
-    let concat = str1.concat(": ",str2.toString());
+    let concat = str1.concat(": ", str2.toString());
 
-    for(let i = 0; i < this.cols.length; i++){
-      if(concat = this.cols[i]){
-        this.cols.splice(i,1);
+    for (let i = 0; i < this.cols.length; i++) {
+      if (concat = this.cols[i]) {
+        this.cols.splice(i, 1);
       }
     }
   }
 
-//clase para probar xD
- 
-dropdownselection(columntype){
+  //clase para probar xD
 
-  columntype.value = 'prueba';
-}
-   
+  dropdownselection(columntype) {
+    this.culumnaSeleccionada = columntype;
+    console.log('object :>> ', columntype);
+    // columntype.value = 'prueba';
+  }
 
-  saveNewtable(){
+
+  saveNewtable() {
 
     delete this.tables.created_at;
     delete this.tables.id;
     let SQL = "CREATE TABLE projectotbd.";
     let nametable1 = this.tables.Name;
-    let query1 = SQL.concat(nametable1.toString()," ","(",this.cols.toString(),");");
+    let query1 = SQL.concat(nametable1.toString(), " ", "(", this.cols.toString(), ");");
 
     this.tableService.addviaTableQuery(query1)
-    .subscribe(
-      res => {
-        console.log(res);
-      },
-      err => console.error(err)
-    )
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => console.error(err)
+      )
 
     console.log(query1);
   }
 
-  
-  
-  
+  getTables() {
+    this.tableService.getTable()
+      .subscribe(
+        res => {
+          this.tables = res;
+        },
+        err => console.error(err)
+      );
+  }
 
-  
+
+
+
+
+
 
 }
 

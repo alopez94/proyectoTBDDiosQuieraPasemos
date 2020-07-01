@@ -10,6 +10,7 @@ const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const gamesRoutes_1 = __importDefault(require("./routes/gamesRoutes"));
 const queryRoutes_1 = __importDefault(require("./routes/queryRoutes"));
 const TableQueryRoute_1 = __importDefault(require("./routes/TableQueryRoute"));
+const sqlVariablesNamesRoutes_1 = __importDefault(require("./routes/sqlVariablesNamesRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -29,6 +30,7 @@ class Server {
         this.app.use('/api/query', queryRoutes_1.default);
         this.app.use('/api/tableNames', queryRoutes_1.default);
         this.app.use('/api/TableQuery', TableQueryRoute_1.default);
+        this.app.use('/api/getVariablesSQL', sqlVariablesNamesRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

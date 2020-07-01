@@ -37,7 +37,7 @@
                                     
                                                 <div class="col pr-0">
 
-                                                    <input type="text" name="Type" placeholder="Type" class="form-control" #columnType>
+                                                    <input type="text" readonly name="Type" placeholder="Type" class="form-control" #columnType [(ngModel)]="culumnaSeleccionada" >
                                                     
                                                 </div>  
                                                 
@@ -48,9 +48,9 @@
                                                     </button>
                                                     <div class="dropdown-menu">
                                                         <ul>
-                                                        <button *ngFor="let variable of variables" (onclick)="dropdownselection(columnType)">
+                                                        <option *ngFor="let variable of variables" [value]="culumnaSeleccionada" (click)="dropdownselection(variable)">
                                                             {{variable}}
-                                                        </button>
+                                                        </option>
                                                     </ul>
                                                     </div>
                                                 </div>
