@@ -11,7 +11,9 @@ import { PersonalizedQueryComponent } from './components/personalized-query/pers
 
 import { TableServices } from './services/table.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListTablesComponent } from './components/list-tables/list-tables.component'
+import { ListTablesComponent } from './components/list-tables/list-tables.component';
+import { AddTablesSQLComponent } from './components/add-tables-sql/add-tables-sql.component';
+import { PersonalizedQuerySQLComponent } from './components/personalized-query-sql/personalized-query-sql.component'
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ListTablesComponent } from './components/list-tables/list-tables.compon
     NavigationComponent,
     PersonalizedQueryComponent,
     ListTablesComponent,
+    AddTablesSQLComponent,
+    PersonalizedQuerySQLComponent,
   ],
   imports: [
     BrowserModule,

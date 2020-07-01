@@ -3,20 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TableFormComponent } from './components/AddTables/table-form.component';
 import { PersonalizedQueryComponent } from './components/personalized-query/personalized-query.component';
-import { ListTablesComponent } from './components/list-tables/list-tables.component';
+import { AddTablesSQLComponent } from './components/add-tables-sql/add-tables-sql.component';
+import { PersonalizedQuerySQLComponent } from './components/personalized-query-sql/personalized-query-sql.component';
+
 
 
 const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/tables',
+    redirectTo: '/add',
     pathMatch: 'full'
-  },
-  {
-    path: 'tables',
-    component: ListTablesComponent
-
   },
   {
     path: 'tables/add',
@@ -25,6 +22,14 @@ const routes: Routes = [
   {
     path: 'tables/personalizedQuery',
     component: PersonalizedQueryComponent
+  },
+  {
+    path: 'tables/addsql',
+    component: AddTablesSQLComponent
+  },
+  {
+    path: 'tables/personalizedQuerysql',
+    component: PersonalizedQuerySQLComponent
   }
 ];
 
