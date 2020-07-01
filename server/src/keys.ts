@@ -19,7 +19,9 @@ export default {
         options: {
             port: 49175,
             // instanceName:'DESKTOP-TD3NOBK\SQLSERVERPROJTUR',
-            database: 'proyectotbd'
+            database: 'proyectotbd',
+            rowCollectionOnRequestCompletion: true
+
         }
 
     }

@@ -8,6 +8,33 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            SQL
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/tables" routerLinkActive="active">List Tables <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/tables/add" routerLinkActive="active">Add Tables <i class="fas fa-plus-circle"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/tables/personalizedQuery" routerLinkActive="active"> Personalized Query <i class="fas fa-plus-circle"></i></a>
+          </li>
+        </div>
+  
+      </li>
+
+
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MySQL
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <li class="nav-item active">
           <a class="nav-link" routerLink="/tables" routerLinkActive="active">List Tables <span class="sr-only">(current)</span></a>
         </li>
@@ -17,6 +44,11 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/tables/personalizedQuery" routerLinkActive="active"> Personalized Query <i class="fas fa-plus-circle"></i></a>
         </li>
+      </div>
+
+    </li>
+
+
       </ul>
       
     </div>

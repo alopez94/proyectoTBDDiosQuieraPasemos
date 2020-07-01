@@ -14,6 +14,8 @@ class TableQueryController {
         res.json({message:responsee});
     }
 
+    
+
    
     
 }

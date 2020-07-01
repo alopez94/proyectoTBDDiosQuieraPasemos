@@ -22,12 +22,12 @@
             </form>
 
             <div class="container">
-                        <form (submit)="addColumnstoPreview(columnName,columnType)">
+                        <form (submit)="addColumnstoPreview(columnName,columnType,varsize)">
                                 <div class="row">
 
                                     <div class="form-group form-check col">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Primary Key?</label>
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+                                        <label class="form-check-label" for="exampleCheck1">Primary Key</label>
                                     </div>
 
                                                 <div class="col">
@@ -37,37 +37,45 @@
                                     
                                                 <div class="col pr-0">
 
-                                                    <input type="text" readonly name="Type" placeholder="Type" class="form-control" #columnType [(ngModel)]="culumnaSeleccionada" >
+                                                    <input type="text" readonly name="Type" placeholder="Type" class="form-control" #columnType [(ngModel)]="culumnaSeleccionada.name" >
                                                     
                                                 </div>  
                                                 
                                             
-                                                <div class="btn-group dropright col pl-0">
-                                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                                <div class="btn-group dropright col pl-0 pr-0 mr-0">
+                                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Variable
                                                     </button>
                                                     <div class="dropdown-menu">
                                                         <ul>
-                                                        <option *ngFor="let variable of variables" [value]="culumnaSeleccionada" (click)="dropdownselection(variable)">
-                                                            {{variable}}
+                                                        <option *ngFor="let variable of variables" [value]="culumnaSeleccionada" (click)="dropdownselection(variable)" >
+                                                            {{variable.name}}
                                                         </option>
                                                     </ul>
                                                     </div>
                                                 </div>
+
+                                                
+                                                <div class="col pl-0 ml-0">
+
+                                                    <input type="text" name="size" placeholder="Size" class="form-control" #varsize>
+                                                    
+                                                </div>  
                                             
                                                 <div class="col pr-0">
-                                                    <input type="text" name="relatedTable"  placeholder="Connect to :" class="form-control" #relatedTable>
+                                                    <input type="text" readonly name="relatedTable"  placeholder="to :" class="form-control" #relatedTable [(ngModel)]="NombreTablaSeleccionada">
                                                 </div>
 
-                                                <div class="btn-group dropright col pl-0" id="drop1">
+                                                <div class="btn-group dropright col pl-0">
                                                     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                                     Tables
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" selected="selected"> Table 1</a>
-                                                        <a class="dropdown-item" selected="selected"> Table 2</a>
-                                                        <a class="dropdown-item" selected="selected"> Table 3</a>
-                                                        
+                                                        <ul>
+                                                        <option *ngFor="let tablename of tablenames" [value]="NombreTablaSeleccionada" (click)="dropdownselectionTables(tablename)">
+                                                            {{tablename}}
+                                                        </option>
+                                                    </ul>
                                                     </div>
                                                 </div>
 
@@ -105,7 +113,7 @@
             <ul>
               <li *ngFor="let col of cols" class="text-left">
                 
-                {{col}}    <button class="btn btn-danger" (click)="deleteColumn(columnName,columnType)">X</button> 
+                {{col}}    <button class="btn btn-danger" (click)="deleteColumn(columnName,columnType,varsize)">X</button> 
                     <br>
              </li> 
             </ul>

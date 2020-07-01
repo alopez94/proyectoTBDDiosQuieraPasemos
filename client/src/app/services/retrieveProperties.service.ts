@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TableServices {
+export class retrieveProperties {
 
 
   API_URI = 'http://localhost:3000/api';
@@ -21,5 +21,9 @@ export class TableServices {
     return this.https.get(`${this.API_URI}/getVariablesSQL`);
   }
 
+  GetTableNames(){
+
+    return this.https.get(`${this.API_URI}/getTablesNamesSQL`);
+  }
 
 }
