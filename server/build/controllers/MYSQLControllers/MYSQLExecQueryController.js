@@ -8,25 +8,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sqlvariablesnames = void 0;
-const tedious_1 = require("tedious");
-class sqlVariablesNames {
-    GetVariablesNames(req, res) {
+exports.mYSQLExecQueryController = void 0;
+//import  *as tedious  from 'tedious';
+var Request = require('tedious').Request;
+const database_1 = __importDefault(require("../../database"));
+// import poolsql from '../../databasesql';
+class MYSQLExecQueryController {
+    execQuery(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let variable2 = Object.keys(tedious_1.TYPES).map((key) => {
-                return {
-                    //@ts-ignore
-                    name: typesObj[key].name,
-                    //@ts-ignore
-                    maxlength: tedious_1.TYPES[key].maximumLength,
-                    //@ts-ignore
-                    Type: tedious_1.TYPES[key].type
-                };
+            console.log('req.body MYSQLExecQueryController:>> ', req.body.query);
+            database_1.default.query(req.body.query).then((responsee) => {
+                res.json({ message: responsee });
+            }, (error) => {
+                res.status(400).json(error);
             });
-            //console.log('object :>> ', TYPES);
-            res.json(variable2);
+            //res.status(400).json({ error: "error Desconocido" })
         });
     }
 }
-exports.sqlvariablesnames = new sqlVariablesNames();
+exports.mYSQLExecQueryController = new MYSQLExecQueryController();

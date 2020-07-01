@@ -12,25 +12,37 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/add',
+    redirectTo: '/tables/add',
     pathMatch: 'full'
   },
   {
-    path: 'tables/add',
-    component: TableFormComponent
+    path: 'sql',
+    children: [
+      {
+        path: 'tables/addsql',
+        component: AddTablesSQLComponent
+      },
+      {
+        path: 'tables/personalizedQuerysql',
+        component: PersonalizedQuerySQLComponent
+      }
+    ]
   },
   {
-    path: 'tables/personalizedQuery',
-    component: PersonalizedQueryComponent
+    path: 'mysql',
+    children: [
+      {
+        path: 'tables/add',
+        component: TableFormComponent
+      },
+      {
+        path: 'tables/personalizedQuery',
+        component: PersonalizedQueryComponent
+      },
+
+    ]
   },
-  {
-    path: 'tables/addsql',
-    component: AddTablesSQLComponent
-  },
-  {
-    path: 'tables/personalizedQuerysql',
-    component: PersonalizedQuerySQLComponent
-  }
+
 ];
 
 @NgModule({

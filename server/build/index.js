@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const gamesRoutes_1 = __importDefault(require("./routes/gamesRoutes"));
 const queryRoutes_1 = __importDefault(require("./routes/queryRoutes"));
+const MYSQLExecQueryRoutes_1 = __importDefault(require("./routes/MYSQLRoutes/MYSQLExecQueryRoutes"));
 const TableQueryRoute_1 = __importDefault(require("./routes/TableQueryRoute"));
 const sqlVariablesNamesRoutes_1 = __importDefault(require("./routes/sqlVariablesNamesRoutes"));
 const sqlTableNameRoutes_1 = __importDefault(require("./routes/sqlTableNameRoutes"));
@@ -29,6 +30,7 @@ class Server {
         this.app.use(indexRoutes_1.default);
         this.app.use('/api/games', gamesRoutes_1.default);
         this.app.use('/api/query', queryRoutes_1.default);
+        this.app.use('/api/mysql/query', MYSQLExecQueryRoutes_1.default);
         this.app.use('/api/tableNames', queryRoutes_1.default);
         this.app.use('/api/TableQuery', TableQueryRoute_1.default);
         this.app.use('/api/getVariablesSQL', sqlVariablesNamesRoutes_1.default);

@@ -18,13 +18,13 @@ export class TableServices {
 
   //getservices ----------------------------------------
 
-  getTable(){
+  getTable() {
 
     return this.https.get(`${this.API_URI}/table`);
 
   }
 
-  GetTables(id: string){
+  GetTables(id: string) {
 
     return this.https.get(`${this.API_URI}/table/${id}`);
   }
@@ -32,23 +32,25 @@ export class TableServices {
 
   //deleteServices--------------------------------------
 
-   deleteTable(id: string){
+  deleteTable(id: string) {
     return this.https.delete(`${this.API_URI}/table/${id}`);
   }
 
-  saveTable(table: Table){
+  saveTable(table: Table) {
     return this.https.post(`${this.API_URI}/table`, table);
   }
-
+  executeSqlQuery(sqlQuery: string) {
+    return this.https.post(`${this.API_URI}/query`, { query: sqlQuery }); //personalized Query MYSQL
+  }
   //Add MYSQL-----------------------------------------------------------------------
-  addviaQuery(sqlQuery: string){
-    return this.https.post(`${this.API_URI}/query`, {query:sqlQuery}); //personalized Query MYSQL
+  addviaQuery(sqlQuery: string) {
+    return this.https.post(`${this.API_URI}/mysql/query`, { query: sqlQuery }); //personalized Query MYSQL
   }
 
-  addviaTableQuery(sqlQueryTableName: any){
-    return this.https.post(`${this.API_URI}/TableQuery`, {query:sqlQueryTableName}); // AddVia Table MYSQL
+  addviaTableQuery(sqlQueryTableName: any) {
+    return this.https.post(`${this.API_URI}/TableQuery`, { query: sqlQueryTableName }); // AddVia Table MYSQL
   }
-  
-  
+
+
 
 }

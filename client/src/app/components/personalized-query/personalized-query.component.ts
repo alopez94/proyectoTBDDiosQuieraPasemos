@@ -14,37 +14,45 @@ export class PersonalizedQueryComponent implements OnInit {
 
   constructor(private tableService: TableServices) { }
   tablesNames: any = [];
-
+  error = false;
+  queryExitoso = false;
+  mensajeError = '';
+  mensajeExito = '';
   ngOnInit(): void {
 
-    
+
   }
 
-  addviaQuery(sqlquery){
+  addviaQuery(sqlquery) {
     console.log(sqlquery);
-    
+
     this.tableService.addviaQuery(sqlquery)
-    .subscribe(
-      res => {
-        console.log(res);
-      },
-      err => console.error(err)
-    )
+      .subscribe(
+        res => {
+          // @ts-ignore
+          this.mensajeExito = res.message;
+          this.mostrarMensajeExito();
+        },
+        err => {
+          console.error(err);
+          this.mensajeError = err.error.sqlMessage;
+          this.mostrarMensajeError();
+        }
+      );
     sqlquery.value = '';
-    
+
 
   }
-/*
-  getTableNames(){
-    this.tableService.GetTablesQueryP().subscribe(
-      res => {
-        this.tablesNames = res;
-
-      },
-      err => console.error(err)
-
-    );
-
-
-  }*/
+  mostrarMensajeExito() {
+    this.queryExitoso = true;
+    setTimeout(() => {
+      this.queryExitoso = false;
+    }, 5 * 1000);
+  }
+  mostrarMensajeError() {
+    this.error = true;
+    setTimeout(() => {
+      this.error = false;
+    }, 5 * 1000);
+  }
 }

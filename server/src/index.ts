@@ -5,6 +5,7 @@ import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import gamesRoutes from './routes/gamesRoutes';
 import queryRoute22 from './routes/queryRoutes';
+import MYSQLExecQueryRoutes from './routes/MYSQLRoutes/MYSQLExecQueryRoutes';
 import TableQueryRoute from './routes/TableQueryRoute';
 import  sqlVariablesNamesRoutes from './routes/sqlVariablesNamesRoutes';
 import  sqlTableNameRoutes from './routes/sqlTableNameRoutes';
@@ -35,6 +36,7 @@ class Server {
         this.app.use(indexRoutes);
         this.app.use('/api/games', gamesRoutes);
        this.app.use('/api/query', queryRoute22);
+       this.app.use('/api/mysql/query', MYSQLExecQueryRoutes);
        this.app.use('/api/tableNames', queryRoute22);
        this.app.use('/api/TableQuery',TableQueryRoute);
        this.app.use('/api/getVariablesSQL', sqlVariablesNamesRoutes);
