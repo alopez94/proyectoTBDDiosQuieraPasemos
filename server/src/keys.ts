@@ -1,4 +1,4 @@
-export default  {
+export default {
 
     database: {
         host: 'localhost',
@@ -8,12 +8,19 @@ export default  {
     },
 
     databaseSQL: {
-        
-        user: 'sa1',
-        password: 'abcd1234**',
-        server: 'DESKTOP-TD3NOBK\SQLSERVERPROJTUR', 
-        database: 'proyectotbd'
-        
-        
+        authentication: {
+            type: "default",
+            options: {
+                userName: 'sa',
+                password: 'abc123**',
+            },
+        },
+        server: '192.168.0.18',
+        options: {
+            port: 49175,
+            // instanceName:'DESKTOP-TD3NOBK\SQLSERVERPROJTUR',
+            database: 'proyectotbd'
+        }
+
     }
 }

@@ -13,6 +13,8 @@ class TableQueryRoutes {
     config(): void {
         
         this.router.post('/', tablequerycontroller.create); 
+        
+
        
     }
 }

@@ -2,6 +2,7 @@ import { Request, Response, query, text } from 'express';
 
 import pool  from '../database';
 
+
 class TableQueryController {
 
     

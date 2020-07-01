@@ -11,6 +11,7 @@ class QueryRoutes {
         this.router.post('/', CustumQueryController_1.customquerycontroller.create);
         this.router.get('/', CustumQueryController_1.customquerycontroller.traerNombresTablasmySQL);
         this.router.post('/add', CustumQueryController_1.customquerycontroller.createTableMySQL);
+        this.router.post('/sql', CustumQueryController_1.customquerycontroller.createSQL);
     }
 }
 const queryRoute22 = new QueryRoutes();
