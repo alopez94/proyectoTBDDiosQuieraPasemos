@@ -40,19 +40,15 @@ export class TableServices {
     return this.https.post(`${this.API_URI}/table`, table);
   }
 
-  
+  //Add MYSQL-----------------------------------------------------------------------
   addviaQuery(sqlQuery: string){
-    return this.https.post(`${this.API_URI}/query`, {query:sqlQuery});
+    return this.https.post(`${this.API_URI}/query`, {query:sqlQuery}); //personalized Query MYSQL
   }
 
   addviaTableQuery(sqlQueryTableName: any){
-    return this.https.post(`${this.API_URI}/TableQuery`, {query:sqlQueryTableName});
+    return this.https.post(`${this.API_URI}/TableQuery`, {query:sqlQueryTableName}); // AddVia Table MYSQL
   }
   
-  GetTablesQueryP(){
-
-    return this.https.get(`${this.API_URI}/tableNames`);
-  }
-
+  
 
 }

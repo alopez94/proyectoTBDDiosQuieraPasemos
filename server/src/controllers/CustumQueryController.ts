@@ -31,10 +31,23 @@ class CustomQueryController {
 
     public async traerNombresTablasmySQL(req: Request, res: Response): Promise<void>{
         console.log('Check');
-         let getTable = "SELECT table_name FROM information_schema.tables;";
-        let tablesNames = pool.query(getTable);
+         let getTable = "SELECT * FROM projectotbd.gettablesname;";
+        let tablesNames = pool.query(getTable, ()=>{
+
+        });
+        console.log('object :>> ', tablesNames);
            res.json(tablesNames);
            
+      }
+
+      public async getOne (req: Request, res: Response): Promise<any>{
+        
+        const getTableNames = await pool.query('SELECT * FROM projectotbd.gettablesname;');
+        console.log(getTableNames);
+       
+            return res.json(getTableNames[0]);
+        
+        //res.status(404).json({text: "Game not found"});
       }
 
 

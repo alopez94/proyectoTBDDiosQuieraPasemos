@@ -43,9 +43,19 @@ class CustomQueryController {
     traerNombresTablasmySQL(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('Check');
-            let getTable = "SELECT table_name FROM information_schema.tables;";
-            let tablesNames = database_1.default.query(getTable);
+            let getTable = "SELECT * FROM projectotbd.gettablesname;";
+            let tablesNames = database_1.default.query(getTable, () => {
+            });
+            console.log('object :>> ', tablesNames);
             res.json(tablesNames);
+        });
+    }
+    getOne(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const getTableNames = yield database_1.default.query('SELECT * FROM projectotbd.gettablesname;');
+            console.log(getTableNames);
+            return res.json(getTableNames[0]);
+            //res.status(404).json({text: "Game not found"});
         });
     }
     createTableMySQL(req, res) {

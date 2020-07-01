@@ -17,10 +17,10 @@ export class PersonalizedQueryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //this.getTableNames();
+    
   }
 
-  addviaQuery(sqlquery: string){
+  addviaQuery(sqlquery){
     console.log(sqlquery);
     
     this.tableService.addviaQuery(sqlquery)
@@ -30,6 +30,9 @@ export class PersonalizedQueryComponent implements OnInit {
       },
       err => console.error(err)
     )
+    sqlquery.value = '';
+    
+
   }
 /*
   getTableNames(){

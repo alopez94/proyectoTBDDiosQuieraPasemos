@@ -9,11 +9,17 @@
     <div class="card-body">
         <form>
         <p>Ingresa tu Codigo Personalizado (MySQL/SQL) Aqui</p>
-        <div class="form-group">
-            <textarea #sqlQuerydelForm id="" placeholder="SQL/MYSQL Code" rows="5" columns="4" class="form-control"></textarea>
-        </div>
         
-        <button class="btn btn-success btn-block" (click)="addviaQuery(sqlQuerydelForm.value)">
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Ingresa Codigo SQL -></span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea" #mysqlQuerydelForm></textarea>
+        </div>
+
+        
+        <button class="btn btn-success btn-block" (click)="addviaQuery(mysqlQuerydelForm.value)">
                 Execute
         </button>
         

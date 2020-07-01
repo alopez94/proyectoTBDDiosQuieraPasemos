@@ -15,7 +15,7 @@ export class TableFormComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
 
-  VarsizeCheck: Boolean = false;
+ 
   cols: string[] = [];
   variables: any;
   tablenames: any;
@@ -37,7 +37,7 @@ export class TableFormComponent implements OnInit {
  
 
   ngOnInit(): void {
-    this.getVariables();
+    //this.getVariables();
     this.getTablesNames();
     
   }
@@ -95,6 +95,11 @@ export class TableFormComponent implements OnInit {
 
   }
 
+  dropdownselectionTablesCol(relatedTable){
+    this.NombreTablaSeleccionada= relatedTable;
+    console.log('object :>> ', relatedTable);
+  }
+
   saveNewtable() {
 
     delete this.tables.created_at;
@@ -114,7 +119,7 @@ export class TableFormComponent implements OnInit {
     
     console.log(query1);
   }
-
+/*
   getVariables() {
     this.retrieveData.GetTableVariables()
       .subscribe(
@@ -124,7 +129,7 @@ export class TableFormComponent implements OnInit {
         err => console.error(err)
       );
   }
-
+*/
   getTablesNames() {
     this.retrieveData.GetTableNames()
       .subscribe(

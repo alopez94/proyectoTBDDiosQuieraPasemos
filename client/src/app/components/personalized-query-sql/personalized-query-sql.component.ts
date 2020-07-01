@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Table } from 'src/app/models/table';
+import { TableServices } from '../../services/table.service';
+
 
 @Component({
   selector: 'app-personalized-query-sql',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalizedQuerySQLComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tableService: TableServices) { }
+  tablesNames: any = [];
 
   ngOnInit(): void {
+  }
+  addviaQuerySQL(sqlquery: string){
+    console.log(sqlquery);
+    
+    this.tableService.addviaQuery(sqlquery)
+    .subscribe(
+      res => {
+        console.log(res);
+      },
+      err => console.error(err)
+    )
   }
 
 }

@@ -15,15 +15,27 @@ export class retrieveProperties {
 
   constructor(private https: HttpClient) { }
 
- 
-  GetTableVariables(){
+ //SQL
+  GetTableVariablesSQL(){
 
     return this.https.get(`${this.API_URI}/getVariablesSQL`);
   }
 
-  GetTableNames(){
+  GetTableNamesSQL(){
 
     return this.https.get(`${this.API_URI}/getTablesNamesSQL`);
+  }
+
+//MySQL
+  GetTableVariables(){
+
+
+    
+    return;
+  }
+  GetTableNames(){
+    return this.https.get(`${this.API_URI}/tableNames`);
+    
   }
 
 }
