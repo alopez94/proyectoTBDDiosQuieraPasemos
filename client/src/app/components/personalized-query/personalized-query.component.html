@@ -43,9 +43,25 @@
 -->
 
   <br>
-  
-  <div *ngIf="queryExitoso" class="alert alert-primary" role="alert">
-    Query Ejecutado exitosamente! :{{mensajeExito}}
+
+  <div *ngIf="queryExitoso && mensajeExito.length==0" class="alert alert-primary" role="alert">
+    Query Ejecutado exitosamente :{{mensajeExito}}
+  </div>
+  <div *ngIf="queryExitosoArray">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th *ngFor="let header of queryExitosoHeader">{{header}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bodyPiece of mensajeExitoArray">
+          <td *ngFor="let piece of bodyPiece">{{piece}}</td>
+        </tr>
+
+      </tbody>
+    </table>
   </div>
   <div *ngIf="error" class="alert alert-danger" role="alert">
     Mensaje Error :{{mensajeError}}

@@ -16,8 +16,12 @@ export class PersonalizedQueryComponent implements OnInit {
   tablesNames: any = [];
   error = false;
   queryExitoso = false;
+  queryExitosoArray = false;
+  queryExitosoHeader = [];
   mensajeError = '';
   mensajeExito = '';
+  mensajeExitoArray = [];
+
   ngOnInit(): void {
 
 
@@ -29,8 +33,30 @@ export class PersonalizedQueryComponent implements OnInit {
     this.tableService.addviaQuery(sqlquery)
       .subscribe(
         res => {
+          console.error(res);
           // @ts-ignore
-          this.mensajeExito = res.message;
+          if (Array.isArray(res.message) && res.message.length > 0) {
+            //  = res.message;
+            // @ts-ignore
+            console.log('res.message', res.message);
+            this.queryExitosoHeader = [];
+            // @ts-ignore
+            this.mensajeExitoArray = res.message.map((element, index) => {
+              return Object.keys(element).map(key => {
+                if (index === 0) {
+                  this.queryExitosoHeader.push(key);
+                }
+                return element[key] ? element[key] : '';
+              });
+            });
+            this.queryExitosoArray = true;
+          } else {
+            // @ts-ignore
+            this.mensajeExito = res.message;
+            this.queryExitoso = true;
+          }
+          console.log('body', this.mensajeExitoArray);
+          console.log('header', this.queryExitosoHeader);
           this.mostrarMensajeExito();
         },
         err => {
@@ -44,9 +70,9 @@ export class PersonalizedQueryComponent implements OnInit {
 
   }
   mostrarMensajeExito() {
-    this.queryExitoso = true;
     setTimeout(() => {
       this.queryExitoso = false;
+      this.queryExitosoArray = false;
     }, 5 * 1000);
   }
   mostrarMensajeError() {
